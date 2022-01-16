@@ -8,7 +8,7 @@ import java.util.Properties;
 public class LoadConfiguration extends Load{
 
     public LoadConfiguration() {
-        super("src/main/resources/properties.properties");
+        super("src/main/resources/Properties.properties");
     }
 
     public Properties loadConfiguration() throws IOException {
