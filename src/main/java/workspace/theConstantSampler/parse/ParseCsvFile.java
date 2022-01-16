@@ -1,5 +1,9 @@
 package workspace.theConstantSampler.parse;
 
+import workspace.theConstantSampler.dataBase.DataBase;
+import workspace.theConstantSampler.dataBase.DataBaseFactory;
+import workspace.theConstantSampler.load.LoadCsvFile;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,7 +12,7 @@ import java.util.List;
 
 public class ParseCsvFile extends Parse{
 
-    /*final static String COMMA_DELIMITER = ",";
+    final static String COMMA_DELIMITER = ",";
 
     public ParseCsvFile(String path, HashMap<String, DataBaseFactory> map) {
         super(path, map);
@@ -26,5 +30,5 @@ public class ParseCsvFile extends Parse{
         }
 
         return map.get(super.path).get();
-    }*/
+    }
 }
