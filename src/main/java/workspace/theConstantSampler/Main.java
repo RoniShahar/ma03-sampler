@@ -1,0 +1,8 @@
+package workspace.theConstantSampler;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+    }
+}
