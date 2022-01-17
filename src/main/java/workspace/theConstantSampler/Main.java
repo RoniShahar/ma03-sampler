@@ -4,6 +4,9 @@ import workspace.theConstantSampler.dataBase.DataBaseFactory;
 import workspace.theConstantSampler.dataBase.ListOfMadaResults;
 import workspace.theConstantSampler.processing.Processing;
 import workspace.theConstantSampler.processing.ProcessingFactory;
+import workspace.theConstantSampler.write.Write;
+import workspace.theConstantSampler.write.WriteFactory;
+import workspace.theConstantSampler.write.WriteToJsonFile;
 
 import java.util.HashMap;
 
@@ -19,7 +22,11 @@ public class Main {
             //put("src/main/resources/LabTests.csv", new ProcessingOfLabTests());
         }};
 
-        ETLManager manager = new ETLManager(dataBases, dataBasesThatNeedTransform);
+        HashMap<String, WriteFactory> writers = new HashMap<>() {{
+            put("src/main/resources/LabTests.csv", new WriteToJsonFile());
+        }};
+
+        ETLManager manager = new ETLManager(dataBases, dataBasesThatNeedTransform, writers);
         //manager.manage("src/main/resources/MadaReports.csv");
         manager.manage("src/main/resources/LabTests.csv");
     }

@@ -5,11 +5,8 @@ import workspace.theConstantSampler.dataBase.DataBase;
 import java.io.IOException;
 import java.util.List;
 
-public abstract class Write {
+public interface WriteFactory {
 
-    protected List<DataBase> list;
-
-    public Write() {
-        this.list = null;
-    }
+    void setList(List<DataBase> list);
+    void write() throws IOException;
 }

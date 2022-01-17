@@ -9,16 +9,27 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
 
-public class WriteToJsonFile extends Write{
+public class WriteToJsonFile extends Write implements WriteFactory{
 
     protected ObjectMapper objectMapper;
 
-    public WriteToJsonFile(List<DataBase> list) throws IOException {
-        super(list);
-        objectMapper = new ObjectMapper();
+    public WriteToJsonFile() {
+        super();
+        this.objectMapper = new ObjectMapper();
     }
 
-    public void writeToJsonFile() throws IOException {
+    @Override
+    void p() {
+
+    }
+
+    @Override
+    public void setList(List<DataBase> list) {
+        super.list = list;
+    }
+
+    @Override
+    public void write() throws IOException {
         Properties properties = new LoadConfiguration().loadConfiguration();
         int maxRowInFile = Integer.parseInt(properties.getProperty("MAX_ROW_IN_FILE"));
         List<DataBase> subList;
@@ -31,6 +42,6 @@ public class WriteToJsonFile extends Write{
                 objectMapper.writerWithDefaultPrettyPrinter().writeValue(new java.io.File("C://Users//Ronis//Desktop//txt//mada_reports" + i + ".json"), subList);
             }
         }
-
     }
+
 }

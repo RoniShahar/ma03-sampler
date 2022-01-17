@@ -8,16 +8,21 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
 
-public class WriteToXmlFile extends Write{
+public class WriteToXmlFile extends Write implements WriteFactory{
 
     protected XmlMapper mapper;
 
     public WriteToXmlFile(List<DataBase> list) {
-        super(list);
+        super();
         mapper = new XmlMapper();
     }
 
-    public void writeToJsonFile() throws IOException {
+    @Override
+    public void setList(List<DataBase> list) {
+        super.list = list;
+    }
+
+    public void write() throws IOException {
         Properties properties = new LoadConfiguration().loadConfiguration();
         int maxRowInFile = Integer.parseInt(properties.getProperty("MAX_ROW_IN_FILE"));
         List<DataBase> subList;
@@ -30,6 +35,5 @@ public class WriteToXmlFile extends Write{
                 mapper.writerWithDefaultPrettyPrinter().writeValue(new java.io.File("C://Users//Ronis//Desktop//txt//LABTESTS" + i + ".xml"), subList);
             }
         }
-
     }
 }
