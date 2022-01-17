@@ -29,7 +29,6 @@ public class WriteToXmlFile extends Write{
             for (int j = maxRowInFile*i; j < min; j++) {
                 mapper.writerWithDefaultPrettyPrinter().writeValue(new java.io.File("C://Users//Ronis//Desktop//txt//LABTESTS" + i + ".xml"), subList);
             }
-
         }
 
     }

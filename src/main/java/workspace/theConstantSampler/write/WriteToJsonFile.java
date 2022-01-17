@@ -30,7 +30,6 @@ public class WriteToJsonFile extends Write{
             for (int j = maxRowInFile*i; j < min; j++) {
                 objectMapper.writerWithDefaultPrettyPrinter().writeValue(new java.io.File("C://Users//Ronis//Desktop//txt//mada_reports" + i + ".json"), subList);
             }
-
         }
 
     }
