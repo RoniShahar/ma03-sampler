@@ -19,11 +19,6 @@ public class WriteToJsonFile extends Write implements WriteFactory{
     }
 
     @Override
-    void p() {
-
-    }
-
-    @Override
     public void setList(List<DataBase> list) {
         super.list = list;
     }

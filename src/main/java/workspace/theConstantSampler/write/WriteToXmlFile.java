@@ -12,7 +12,7 @@ public class WriteToXmlFile extends Write implements WriteFactory{
 
     protected XmlMapper mapper;
 
-    public WriteToXmlFile(List<DataBase> list) {
+    public WriteToXmlFile() {
         super();
         mapper = new XmlMapper();
     }

@@ -9,16 +9,27 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class ParseCsvFile extends Parse{
+public class ParseCsvFile extends Parse implements ParseFactory{
 
     final static String COMMA_DELIMITER = ",";
 
-    public ParseCsvFile(String path, HashMap<String, DataBaseFactory> map) {
-        super(path, map);
+    public ParseCsvFile() {
+        super();
     }
 
-    public List<DataBase> parseCsvFile() throws IOException {
+    @Override
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    @Override
+    public void setMap(Map<String, DataBaseFactory> map) {
+        this.map = map;
+    }
+
+    public List<DataBase> parse() throws IOException {
         map.get(super.path).create();
 
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new LoadCsvFile(super.path).loadCsvFile()))) {

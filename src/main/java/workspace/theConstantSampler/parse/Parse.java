@@ -9,8 +9,8 @@ public class Parse {
     protected String path;
     protected Map<String , DataBaseFactory> map;
 
-    public Parse(String path, HashMap<String, DataBaseFactory> map) {
-        this.path = path;
-        this.map = map;
+    public Parse() {
+        this.path = null;
+        this.map = null;
     }
 }

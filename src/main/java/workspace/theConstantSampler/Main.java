@@ -2,11 +2,14 @@ package workspace.theConstantSampler;
 
 import workspace.theConstantSampler.dataBase.DataBaseFactory;
 import workspace.theConstantSampler.dataBase.ListOfMadaResults;
+import workspace.theConstantSampler.parse.ParseCsvFile;
+import workspace.theConstantSampler.parse.ParseFactory;
 import workspace.theConstantSampler.processing.Processing;
 import workspace.theConstantSampler.processing.ProcessingFactory;
 import workspace.theConstantSampler.write.Write;
 import workspace.theConstantSampler.write.WriteFactory;
 import workspace.theConstantSampler.write.WriteToJsonFile;
+import workspace.theConstantSampler.write.WriteToXmlFile;
 
 import java.util.HashMap;
 
@@ -23,10 +26,16 @@ public class Main {
         }};
 
         HashMap<String, WriteFactory> writers = new HashMap<>() {{
-            put("src/main/resources/LabTests.csv", new WriteToJsonFile());
+            put("src/main/resources/MadaReports.csv", new WriteToJsonFile());
+            put("src/main/resources/LabTests.csv", new WriteToXmlFile());
         }};
 
-        ETLManager manager = new ETLManager(dataBases, dataBasesThatNeedTransform, writers);
+        HashMap<String, ParseFactory> parsers = new HashMap<>() {{
+            put("src/main/resources/MadaReports.csv", new ParseCsvFile());
+            put("src/main/resources/LabTests.csv", new ParseCsvFile());
+        }};
+
+        ETLManager manager = new ETLManager(dataBases, dataBasesThatNeedTransform, writers, parsers);
         //manager.manage("src/main/resources/MadaReports.csv");
         manager.manage("src/main/resources/LabTests.csv");
     }
