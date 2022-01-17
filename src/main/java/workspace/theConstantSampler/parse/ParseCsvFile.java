@@ -23,9 +23,16 @@ public class ParseCsvFile extends Parse{
 
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new LoadCsvFile(super.path).loadCsvFile()))) {
             String line;
+            Boolean isHeaderLine = true;
             while ((line = br.readLine()) != null) {
                 String[] record = line.split(COMMA_DELIMITER);
-                map.get(super.path).add(record);
+
+                //if it is the header line, don't add it to the list.
+                if(isHeaderLine) {
+                    isHeaderLine = false;
+                } else {
+                    map.get(super.path).add(record);
+                }
             }
         }
 

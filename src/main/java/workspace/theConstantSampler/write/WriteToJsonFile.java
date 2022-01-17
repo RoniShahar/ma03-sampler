@@ -16,7 +16,6 @@ public class WriteToJsonFile extends Write{
     public WriteToJsonFile(List<DataBase> list) throws IOException {
         super(list);
         objectMapper = new ObjectMapper();
-        //objectMapper.setDefaultPrettyPrinter(new DefaultPrettyPrinter());
     }
 
     public void writeToJsonFile() throws IOException {

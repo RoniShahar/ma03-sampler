@@ -11,14 +11,12 @@ public class LoadConfiguration extends Load{
         super("src/main/resources/Properties.properties");
     }
 
+    /**
+     * @return - Properties object that contain the data from the configuration file.
+     * @throws IOException
+     */
     public Properties loadConfiguration() throws IOException {
-        FileInputStream fileInputStream = null;
-        try {
-            fileInputStream = new FileInputStream(super.path);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
+        FileInputStream fileInputStream = new FileInputStream(super.path);
         Properties prop = new Properties();
         prop.load(fileInputStream);
         return prop;

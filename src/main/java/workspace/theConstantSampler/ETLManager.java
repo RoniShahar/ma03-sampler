@@ -31,6 +31,7 @@ public class ETLManager {
             list = parse.parseCsvFile();
         } catch (IOException e) {
             e.printStackTrace();
+            System.out.println("IO exception, couldn't finish read the file");
         }
 
         if(this.dataBasesThatNeedTransform.containsKey(path)){
@@ -42,6 +43,7 @@ public class ETLManager {
             write.writeToJsonFile();
         } catch (IOException e) {
             e.printStackTrace();
+            System.out.println("IO exception, couldn't finish write the file");
         }
     }
 }
