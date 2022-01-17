@@ -5,7 +5,7 @@ import workspace.theConstantSampler.dataBase.DataBase;
 import java.io.IOException;
 import java.util.List;
 
-public abstract class Write {
+public class Write {
 
     protected List<DataBase> list;
 

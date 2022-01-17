@@ -37,8 +37,8 @@ public class ParseCsvFile extends Parse implements ParseFactory{
             Boolean isHeaderLine = true;
             while ((line = br.readLine()) != null) {
                 String[] record = line.split(COMMA_DELIMITER);
-
-                //if it is the header line, don't add it to the list.
+                int x = record.length;
+                //if it is header line, don't add it to the list.
                 if(isHeaderLine) {
                     isHeaderLine = false;
                 } else {
