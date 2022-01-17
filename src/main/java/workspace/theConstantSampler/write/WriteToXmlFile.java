@@ -1,7 +1,6 @@
 package workspace.theConstantSampler.write;
 
-import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import workspace.theConstantSampler.dataBase.DataBase;
 import workspace.theConstantSampler.load.LoadConfiguration;
 
@@ -9,13 +8,13 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
 
-public class WriteToJsonFile extends Write{
+public class WriteToXmlFile extends Write{
 
-    protected ObjectMapper objectMapper;
+    protected XmlMapper mapper;
 
-    public WriteToJsonFile(List<DataBase> list) throws IOException {
+    public WriteToXmlFile(List<DataBase> list) {
         super(list);
-        objectMapper = new ObjectMapper();
+        mapper = new XmlMapper();
     }
 
     public void writeToJsonFile() throws IOException {
@@ -28,7 +27,7 @@ public class WriteToJsonFile extends Write{
             min = Math.min(maxRowInFile*(i+1), super.list.size());
             subList = super.list.subList(maxRowInFile*i, min);
             for (int j = maxRowInFile*i; j < min; j++) {
-                objectMapper.writerWithDefaultPrettyPrinter().writeValue(new java.io.File("C://Users//Ronis//Desktop//txt//mada_reports" + i + ".json"), subList);
+                mapper.writerWithDefaultPrettyPrinter().writeValue(new java.io.File("C://Users//Ronis//Desktop//txt//LABTESTS" + i + ".xml"), subList);
             }
 
         }
