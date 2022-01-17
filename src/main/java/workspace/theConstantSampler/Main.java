@@ -1,23 +1,24 @@
 package workspace.theConstantSampler;
 
-import workspace.theConstantSampler.dataBase.DataBase;
 import workspace.theConstantSampler.dataBase.DataBaseFactory;
 import workspace.theConstantSampler.dataBase.ListOfMadaResults;
-import workspace.theConstantSampler.parse.ParseCsvFile;
-import workspace.theConstantSampler.write.WriteToJsonFile;
+import workspace.theConstantSampler.processing.Processing;
+import workspace.theConstantSampler.processing.ProcessingFactory;
 
-import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
-        HashMap<String, DataBaseFactory> map = new HashMap<>() {{
+        HashMap<String, DataBaseFactory> dataBases = new HashMap<>() {{
             put("src/main/resources/MadaReports.csv", new ListOfMadaResults());
         }};
 
-        ETLManager manager = new ETLManager(map);
+        HashMap<String, ProcessingFactory> dataBasesThatNeedTransform = new HashMap<>() {{
+            //put("src/main/resources/MadaReports.csv", new ProcessingOfMadaResult());
+        }};
+
+        ETLManager manager = new ETLManager(dataBases, dataBasesThatNeedTransform);
         manager.manage("src/main/resources/MadaReports.csv");
     }
 }
