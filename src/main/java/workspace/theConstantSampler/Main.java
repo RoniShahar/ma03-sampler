@@ -17,20 +17,7 @@ public class Main {
             put("src/main/resources/MadaReports.csv", new ListOfMadaResults());
         }};
 
-
-        ParseCsvFile parse = new ParseCsvFile("src/main/resources/MadaReports.csv", map);
-        List<DataBase> list = null;
-        try {
-            list = parse.parseCsvFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            WriteToJsonFile write = new WriteToJsonFile(list);
-            write.writeToJsonFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        ETLManager manager = new ETLManager(map);
+        manager.manage("src/main/resources/MadaReports.csv");
     }
 }
