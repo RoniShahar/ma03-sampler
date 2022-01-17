@@ -18,6 +18,18 @@ public class MadaReport extends DataBase{
                       String firstName, String lastName, String city,
                       String street, String buildingNumber, String barcode,
                       String getDate, String takeDate, String resultDate) {
+        this.madaCode = madaCode;
+        this.idNum = idNum;
+        this.idType = idType;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.city = city;
+        this.street = street;
+        this.buildingNumber = buildingNumber;
+        this.barcode = barcode;
+        this.takeDate = takeDate;
+        this.resultDate = resultDate;
+
     }
 
     public String getMadaCode() {

@@ -8,8 +8,8 @@ public class ListOfMadaResults implements DataBaseFactory{
     List<DataBase> madaResults;
 
     @Override
-    public List<DataBase> create() {
-        return madaResults = new ArrayList<>();
+    public void create() {
+        madaResults = new ArrayList<>();
     }
 
     @Override
@@ -27,7 +27,7 @@ public class ListOfMadaResults implements DataBaseFactory{
         String takeDate = values[10];
         String resultDate = values[11];
 
-        madaResults.add(new MadaReport(madaCode, idNum, idType, firstName, lastName,
+        this.madaResults.add(new MadaReport(madaCode, idNum, idType, firstName, lastName,
                 city, street, buildingNumber, barcode, getDate, takeDate, resultDate));
     }
 

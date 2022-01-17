@@ -19,7 +19,7 @@ public class ParseCsvFile extends Parse{
     }
 
     public List<DataBase> parseCsvFile() throws IOException {
-        List<DataBase> list = map.get(super.path).create();
+        map.get(super.path).create();
 
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new LoadCsvFile(super.path).loadCsvFile()))) {
             String line;
