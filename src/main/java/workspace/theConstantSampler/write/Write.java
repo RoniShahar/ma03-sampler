@@ -8,8 +8,10 @@ import java.util.List;
 public class Write {
 
     protected List<DataBase> list;
+    protected String path;
 
     public Write() {
         this.list = null;
+        path = null;
     }
 }

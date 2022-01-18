@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface ProcessingFactory {
 
-    List<DataBase> Transfrom(List<DataBase> list);
+    List<DataBase> Transfrom(List<List<DataBase>> list);
 }

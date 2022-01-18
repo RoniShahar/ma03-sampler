@@ -2,7 +2,6 @@ package workspace.theConstantSampler.dataBase;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name = "labTest")
 public class LabTest extends DataBase{
 
     protected String idNum;

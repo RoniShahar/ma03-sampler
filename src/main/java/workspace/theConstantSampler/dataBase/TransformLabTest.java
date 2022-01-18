@@ -1,7 +1,5 @@
 package workspace.theConstantSampler.dataBase;
 
-import java.time.LocalDate;
-
 public class TransformLabTest extends LabTest{
     protected String joinDate;
     protected int healthCareId;

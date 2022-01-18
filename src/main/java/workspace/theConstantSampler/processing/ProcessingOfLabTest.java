@@ -13,11 +13,11 @@ import java.util.List;
 public class ProcessingOfLabTest implements ProcessingFactory{
 
     @Override
-    public List<DataBase> Transfrom(List<DataBase> list) {
+    public List<DataBase> Transfrom(List<List<DataBase>> list) {
         List<DataBase> extendedLabTests = new ArrayList<>();
         HealthCareInfoProvider healthCareInfoProvider = new HealthCareInfoProvider();
 
-        for (DataBase labtest: list) {
+        for (DataBase labtest: list.get(0)) {
             if(labtest instanceof LabTest){
                 try {
                     LabTest test = ((LabTest) labtest);
