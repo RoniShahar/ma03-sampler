@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ParseCsvFile extends Parse implements ParseFactory{
+public class ParseCsvFile extends ParseFile implements ParseFactory{
 
     final static String COMMA_DELIMITER = ",";
 

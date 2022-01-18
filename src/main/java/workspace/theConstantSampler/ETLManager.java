@@ -29,7 +29,7 @@ public class ETLManager {
 
     public List<DataBase> manage(String filepath, String writePath) {
 
-        List<List<DataBase>> allList = new ArrayList<>();
+        List<List<DataBase>> allLists = new ArrayList<>();
         List<DataBase> list = null;
 
         try {
@@ -42,7 +42,8 @@ public class ETLManager {
         }
 
         if(this.dataBasesThatNeedTransform.containsKey(filepath)){
-            list = this.dataBasesThatNeedTransform.get(filepath).Transfrom(allList);
+            allLists.add(list);
+            list = this.dataBasesThatNeedTransform.get(filepath).Transfrom(allLists);
         }
 
         try {

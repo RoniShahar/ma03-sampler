@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
-public class LoadConfiguration extends Load{
+public class LoadConfiguration extends LoadFile{
 
     public LoadConfiguration() {
         super("src/main/resources/Properties.properties");

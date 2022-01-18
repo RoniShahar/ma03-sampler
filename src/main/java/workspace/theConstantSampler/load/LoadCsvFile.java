@@ -2,7 +2,7 @@ package workspace.theConstantSampler.load;
 
 import java.io.*;
 
-public class LoadCsvFile extends Load{
+public class LoadCsvFile extends LoadFile{
 
     public LoadCsvFile(String path) {
         super(path);
