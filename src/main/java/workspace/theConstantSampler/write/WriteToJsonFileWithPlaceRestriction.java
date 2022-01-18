@@ -28,12 +28,14 @@ public class WriteToJsonFileWithPlaceRestriction extends WriteToJsonFile{
         while (numOfObjInList < super.list.size()) {
             file = new File(super.path + numOfFiles + ".json");
             numOfObjInLastFile = numOfObjInList;
+
             try (BufferedWriter writer = Files.newBufferedWriter(file.toPath())) {
                 while (file.length() < maxFileSize && numOfObjInList < super.list.size()) {
                     writer.write(super.list.get(numOfObjInList).toString());
                     numOfObjInList++;
                     subList = super.list.subList(numOfObjInLastFile, numOfObjInList);
                 }
+
                 numOfFiles++;
                 mapper.writerWithDefaultPrettyPrinter().writeValue(file, subList);
             } catch (IOException e) {
