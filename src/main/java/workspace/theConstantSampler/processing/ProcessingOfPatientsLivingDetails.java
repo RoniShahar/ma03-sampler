@@ -6,7 +6,9 @@ import workspace.theConstantSampler.dataBase.MadaReport;
 import workspace.theConstantSampler.dataBase.PatientsLivingDetails;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ProcessingOfPatientsLivingDetails implements ProcessingFactory{
 
@@ -16,16 +18,18 @@ public class ProcessingOfPatientsLivingDetails implements ProcessingFactory{
 
         for (int i = 0; i < list.get(0).size(); i++) {
             for (int j = 0; j < list.get(1).size(); j++) {
-                if(list.get(0) instanceof MadaReport && list.get(1) instanceof LabTest)
+                if(list.get(0).get(i) instanceof MadaReport && list.get(1).get(j) instanceof LabTest)
                 {
-                    if(((MadaReport) list.get(0).get(i)).getIdNum() == ((LabTest) list.get(1).get(j)).getIdNum()){
-                        crossInformation.get(new PatientsLivingDetails(((LabTest) list.get(1).get(j)).getIdNum(), ((LabTest) list.get(1).get(j)).getTestType(),
-                                ((LabTest) list.get(1).get(j)).getFirstName(), ((LabTest) list.get(1).get(j)).getFirstName(),
-                                ((MadaReport) list.get(0).get(j)).getCity(), ((MadaReport) list.get(0).get(j)).getStreet(),
-                                ((MadaReport) list.get(0).get(j)).getBuildingNumber(), ((MadaReport) list.get(0).get(j)).getBarcode(), ((LabTest) list.get(1).get(j)).getBirthDate(),
-                                ((MadaReport) list.get(0).get(j)).getBarcode(), ((MadaReport) list.get(0).get(j)).getResultDate(),
-                                ((MadaReport) list.get(0).get(j)).getTakeDate(), ((LabTest) list.get(1).get(j)).getStickerNumber(),
-                                ((LabTest) list.get(1).get(j)).getResultTestCorona(), (((LabTest) list.get(1).get(j)).getVariant(), (((LabTest) list.get(1).get(j)).getTestType())));
+                    String id1 = ((MadaReport) list.get(0).get(i)).getIdNum();
+                    String id2 = ((LabTest) list.get(1).get(j)).getIdNum();
+                    if(id1.equals(id2)){
+                        crossInformation.add(new PatientsLivingDetails(((LabTest) list.get(1).get(j)).getIdNum(), ((LabTest) list.get(1).get(j)).getIdNum(),
+                                ((LabTest) list.get(1).get(j)).getFirstName(), ((LabTest) list.get(1).get(j)).getLastName(),
+                                ((MadaReport) list.get(0).get(i)).getCity(), ((MadaReport) list.get(0).get(i)).getStreet(),
+                                ((MadaReport) list.get(0).get(i)).getBuildingNumber(), ((MadaReport) list.get(0).get(i)).getBarcode(), ((LabTest) list.get(1).get(j)).getBirthDate(),
+                                ((LabTest) list.get(1).get(j)).getLabCode(), ((MadaReport) list.get(0).get(i)).getResultDate(),
+                                ((MadaReport) list.get(0).get(i)).getTakeDate(), ((LabTest) list.get(1).get(j)).getStickerNumber(),
+                                ((LabTest) list.get(1).get(j)).getResultTestCorona(), ((LabTest) list.get(1).get(j)).getVariant(), (((LabTest) list.get(1).get(j)).getTestType())));
                     }
                 }
             }
