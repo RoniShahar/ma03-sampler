@@ -40,7 +40,7 @@ public class ETLManager {
         }
 
         if(this.dataBasesThatNeedTransform.containsKey(path)){
-            list = this.dataBasesThatNeedTransform.get(path).Transfrom();
+            list = this.dataBasesThatNeedTransform.get(path).Transfrom(list);
         }
 
         try {

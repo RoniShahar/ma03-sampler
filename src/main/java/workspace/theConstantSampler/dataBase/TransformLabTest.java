@@ -3,13 +3,13 @@ package workspace.theConstantSampler.dataBase;
 import java.time.LocalDate;
 
 public class TransformLabTest extends LabTest{
-    protected LocalDate joinDate;
+    protected String joinDate;
     protected int healthCareId;
     protected String healthCareName;
 
     public TransformLabTest(String idNum, String idType, String firstName, String lastName,
                             String resultDate, String birthDate, String labcode, String stickerNumber,
-                            String resultTestCorona, String variant, String testType, LocalDate joinDate,
+                            String resultTestCorona, String variant, String testType, String joinDate,
                             int healthCareId, String healthCareName) {
         super(idNum, idType, firstName, lastName, resultDate, birthDate, labcode, stickerNumber,
                 resultTestCorona, variant, testType);
@@ -18,7 +18,7 @@ public class TransformLabTest extends LabTest{
         this.healthCareName= healthCareName;
     }
 
-    public LocalDate getJoinDate() {
+    public String getJoinDate() {
         return joinDate;
     }
 

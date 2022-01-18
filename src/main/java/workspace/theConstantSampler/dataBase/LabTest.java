@@ -1,5 +1,8 @@
 package workspace.theConstantSampler.dataBase;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "labTest")
 public class LabTest extends DataBase{
 
     protected String idNum;
@@ -8,14 +11,14 @@ public class LabTest extends DataBase{
     protected String lastName;
     protected String resultDate;
     protected String birthDate;
-    protected String labcode;
+    protected String labCode;
     protected String stickerNumber;
     protected String resultTestCorona;
     protected String variant;
     protected String testType;
 
     public LabTest(String idNum, String idType, String firstName, String lastName, String resultDate,
-                   String birthDate, String labcode, String stickerNumber, String resultTestCorona,
+                   String birthDate, String labCode, String stickerNumber, String resultTestCorona,
                    String variant, String testType) {
         this.idNum = idNum;
         this.idType = idType;
@@ -23,7 +26,7 @@ public class LabTest extends DataBase{
         this.lastName = lastName;
         this.resultDate = resultDate;
         this.birthDate = birthDate;
-        this.labcode = labcode;
+        this.labCode = labCode;
         this.stickerNumber = stickerNumber;
         this.resultTestCorona = resultTestCorona;
         this.variant = variant;
@@ -54,8 +57,8 @@ public class LabTest extends DataBase{
         return birthDate;
     }
 
-    public String getLabcode() {
-        return labcode;
+    public String getLabCode() {
+        return labCode;
     }
 
     public String getStickerNumber() {

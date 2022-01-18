@@ -1,5 +1,7 @@
 package workspace.theConstantSampler.dataBase;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+
 import java.util.ArrayList;
 import java.util.List;
 

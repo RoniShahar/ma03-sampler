@@ -10,30 +10,33 @@ import workspace.theConstantSampler.dataBase.TransformLabTest;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProcessingOfLabTest {
+public class ProcessingOfLabTest implements ProcessingFactory{
 
-    List<DataBase> extendedLabTests;
-
-    public List<DataBase> processingOfLabTest(List<DataBase> labTests){
-        extendedLabTests = new ArrayList<>();
+    @Override
+    public List<DataBase> Transfrom(List<DataBase> list) {
+        List<DataBase> extendedLabTests = new ArrayList<>();
         HealthCareInfoProvider healthCareInfoProvider = new HealthCareInfoProvider();
 
-        for (DataBase labtest: labTests) {
+        for (DataBase labtest: list) {
             if(labtest instanceof LabTest){
                 try {
                     LabTest test = ((LabTest) labtest);
-                    PersonInsured person = healthCareInfoProvider.fetchInfo(Integer.parseInt(test.getIdNum()),
-                            Integer.parseInt(test.getIdType()));
-                    extendedLabTests.add(new TransformLabTest(test.getIdNum(), test.getIdType(), test.getFirstName(), test.getLastName(),
-                            test.getResultDate(), test.getBirthDate(), test.getLabcode(), test.getStickerNumber(),
-                            test.getResultTestCorona(), test.getVariant(), test.getTestType(), person.getJoinDate(),
-                            person.getHealthCareId(), person.getHealthCareName()));
+                    if(test.getIdNum().length() != 9){
+                        System.out.println(test.getFirstName() + " " + test.getLastName() + " ID not valid");
+                    } else {
+                        PersonInsured person = healthCareInfoProvider.fetchInfo(Integer.parseInt(test.getIdNum()),
+                                Integer.parseInt(test.getIdType()));
+                        extendedLabTests.add(new TransformLabTest(test.getIdNum(), test.getIdType(), test.getFirstName(), test.getLastName(),
+                                test.getResultDate(), test.getBirthDate(), test.getLabCode(), test.getStickerNumber(),
+                                test.getResultTestCorona(), test.getVariant(), test.getTestType(), person.getJoinDate().toString(),
+                                person.getHealthCareId(), person.getHealthCareName()));
+                    }
                 } catch (InvalidIdException e) {
                     e.printStackTrace();
                 }
             }
         }
 
-        return this.extendedLabTests;
+        return extendedLabTests;
     }
 }

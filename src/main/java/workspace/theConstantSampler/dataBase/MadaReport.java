@@ -1,5 +1,7 @@
 package workspace.theConstantSampler.dataBase;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+
 public class MadaReport extends DataBase{
 
     protected String madaCode;

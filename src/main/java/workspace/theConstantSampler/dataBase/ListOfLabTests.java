@@ -20,14 +20,14 @@ public class ListOfLabTests implements DataBaseFactory{
         String lastName = values[3];
         String resultDate = values[4];
         String birthDate = values[5];
-        String labcode = values[6];
+        String labCode = values[6];
         String stickerNumber = values[7];
         String resultTestCorona = values[8];
         String variant = values[9];
         String testType = values[10];
 
         this.labTests.add(new LabTest(idNum, idType, firstName, lastName, resultDate, birthDate,
-                labcode, stickerNumber, resultTestCorona, variant, testType));
+                labCode, stickerNumber, resultTestCorona, variant, testType));
     }
 
     @Override
