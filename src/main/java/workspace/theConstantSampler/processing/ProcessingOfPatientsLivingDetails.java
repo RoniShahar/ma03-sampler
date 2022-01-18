@@ -22,7 +22,7 @@ public class ProcessingOfPatientsLivingDetails implements ProcessingFactory{
                 {
                     String id1 = ((MadaReport) list.get(0).get(i)).getIdNum();
                     String id2 = ((LabTest) list.get(1).get(j)).getIdNum();
-                    if(id1.equals(id2)){
+                    if(id1.equals(id2) && ((LabTest) list.get(1).get(j)).getResultTestCorona().equals("1")){
                         crossInformation.add(new PatientsLivingDetails(((LabTest) list.get(1).get(j)).getIdNum(), ((LabTest) list.get(1).get(j)).getIdNum(),
                                 ((LabTest) list.get(1).get(j)).getFirstName(), ((LabTest) list.get(1).get(j)).getLastName(),
                                 ((MadaReport) list.get(0).get(i)).getCity(), ((MadaReport) list.get(0).get(i)).getStreet(),

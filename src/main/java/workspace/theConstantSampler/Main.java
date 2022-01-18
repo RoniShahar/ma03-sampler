@@ -11,6 +11,7 @@ import workspace.theConstantSampler.processing.ProcessingOfLabTest;
 import workspace.theConstantSampler.processing.ProcessingOfPatientsLivingDetails;
 import workspace.theConstantSampler.write.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,6 +25,7 @@ public class Main {
             put("src/main/resources/LabTests.csv", new ListOfLabTests());
         }};
 
+        //related to part b
         HashMap<String, ProcessingFactory> dataBasesThatNeedTransform = new HashMap<>() {{
            // put("src/main/resources/LabTests.csv", new ProcessingOfLabTest());
         }};
@@ -38,6 +40,7 @@ public class Main {
             put("src/main/resources/LabTests.csv", new ParseCsvFile());
         }};
 
+        //related to part a + b
         ETLManager manager = new ETLManager(dataBases, dataBasesThatNeedTransform, writers, parsers);
         //manager.manage("src/main/resources/MadaReports.csv", "C://Users//Ronis//Desktop//txt//mada_reports");
         //manager.manage("src/main/resources/LabTests.csv", "C://Users//Ronis//Desktop//txt//LABTESTS");
@@ -46,11 +49,17 @@ public class Main {
         madaResultsAndLabTests.add(manager.manage("src/main/resources/MadaReports.csv", ""));
         madaResultsAndLabTests.add(manager.manage("src/main/resources/LabTests.csv", ""));
 
+        //related to part c
         ProcessingOfPatientsLivingDetails processingOfPatientsLivingDetails = new ProcessingOfPatientsLivingDetails();
         List<DataBase> crossInformation = processingOfPatientsLivingDetails.Transfrom(madaResultsAndLabTests);
-        int x = 5;
-
-
+        WriteToJsonFileWithPlaceRestriction write = new WriteToJsonFileWithPlaceRestriction();
+        write.setPath("C://Users//Ronis//Desktop//txt//POSITIVE_CORONA_PEOPLE");
+        write.setList(crossInformation);
+        try {
+            write.write();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 }
